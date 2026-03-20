@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Challenge Labs 2.0 — March 2026 Diagnostics</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; padding: 2rem; }
+    h1 { font-size: 1.6rem; color: #63b3ed; margin-bottom: 0.25rem; }
+    .subtitle { color: #718096; font-size: 0.85rem; margin-bottom: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+    .card { background: #1a1d27; border: 1px solid #2d3748; border-radius: 10px; padding: 1.25rem; }
+    .card h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #718096; margin-bottom: 1rem; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+    .badge.green { background: #1c4532; color: #68d391; }
+    .badge.blue  { background: #1a365d; color: #63b3ed; }
+    .badge.yellow{ background: #744210; color: #f6e05e; }
+    .kv { display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px solid #2d3748; font-size: 0.85rem; }
+    .kv:last-child { border-bottom: none; }
+    .kv .label { color: #718096; }
+    .kv .value { color: #e2e8f0; font-family: monospace; font-size: 0.8rem; text-align: right; max-width: 60%; word-break: break-all; }
+    .section-title { font-size: 1rem; color: #a0aec0; margin: 1.5rem 0 0.75rem; border-left: 3px solid #63b3ed; padding-left: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th { background: #2d3748; color: #a0aec0; text-align: left; padding: 0.6rem 0.75rem; font-weight: 600; }
+    td { padding: 0.55rem 0.75rem; border-bottom: 1px solid #2d3748; color: #e2e8f0; font-family: monospace; }
+    tr:hover td { background: #1e2535; }
+    .status-ok { color: #68d391; font-weight: 600; }
+    .status-warn { color: #f6e05e; font-weight: 600; }
+    .timeline { list-style: none; padding: 0; }
+    .timeline li { display: flex; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid #2d3748; font-size: 0.83rem; align-items: flex-start; }
+    .timeline li:last-child { border-bottom: none; }
+    .timeline .step { background: #2d3748; color: #63b3ed; border-radius: 999px; padding: 0.15rem 0.55rem; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .timeline .desc { color: #cbd5e0; }
+    .timeline .result { margin-left: auto; white-space: nowrap; }
+    footer { margin-top: 2rem; color: #4a5568; font-size: 0.75rem; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <h1>Challenge 01: AWS CLI, STS, EC2, S3 and KiroCLI</h1>
+  <p class="subtitle">Challenge Labs 2.0 · Generated: 2026-03-20 · Account: 840033526766 · Region: us-east-1</p>
+
+  <!-- Identity -->
+  <p class="section-title">Active Identity</p>
+  <div class="card">
+    <h2>STS Assumed Role</h2>
+    <div class="kv"><span class="label">ARN</span><span class="value">arn:aws:sts::840033526766:assumed-role/role-team-dev/mac-lucasmeira</span></div>
+    <div class="kv"><span class="label">Session</span><span class="value">mac-lucasmeira</span></div>
+    <div class="kv"><span class="label">Account</span><span class="value">840033526766</span></div>
+    <div class="kv"><span class="label">Status</span><span class="value"><span class="badge green">✓ Active</span></span></div>
+  </div>
+
+  <!-- EC2 + S3 summary cards -->
+  <p class="section-title">Resources</p>
+  <div class="grid">
+    <div class="card">
+      <h2>EC2 Instance</h2>
+      <div class="kv"><span class="label">Instance ID</span><span class="value">i-0d4fdaa639f662a0b</span></div>
+      <div class="kv"><span class="label">State</span><span class="value"><span class="badge green">running</span></span></div>
+      <div class="kv"><span class="label">Type</span><span class="value">t2.micro</span></div>
+      <div class="kv"><span class="label">AMI</span><span class="value">ami-02dfbd4ff395f2a1b</span></div>
+      <div class="kv"><span class="label">Key Pair</span><span class="value">formacaoawskey</span></div>
+      <div class="kv"><span class="label">Security Group</span><span class="value">sg-04160637fc1b1467b (bia-web)</span></div>
+      <div class="kv"><span class="label">Subnet</span><span class="value">subnet-034e91ffcbe378258</span></div>
+      <div class="kv"><span class="label">AZ</span><span class="value">us-east-1c</span></div>
+      <div class="kv"><span class="label">Private IP</span><span class="value">172.31.9.76</span></div>
+      <div class="kv"><span class="label">Public IP</span><span class="value">13.220.141.111</span></div>
+      <div class="kv"><span class="label">Public DNS</span><span class="value">ec2-13-220-141-111.compute-1.amazonaws.com</span></div>
+      <div class="kv"><span class="label">Launched</span><span class="value">2026-03-20T18:44:06Z</span></div>
+    </div>
+
+    <div class="card">
+      <h2>S3 Bucket — course-automation-s3-cli</h2>
+      <div class="kv"><span class="label">Total Objects</span><span class="value"><span class="badge blue">5,770 objects</span></span></div>
+      <div class="kv"><span class="label">Root prefix</span><span class="value">docker-docs/</span></div>
+      <div class="kv"><span class="label">Sync time</span><span class="value">2026-03-20T18:46Z</span></div>
+      <div class="kv"><span class="label">Notable files</span><span class="value">.DS_Store uploaded (see note)</span></div>
+      <div class="kv"><span class="label">Status</span><span class="value"><span class="badge green">✓ Synced</span></span></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <p class="section-title">Scripts Validation</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Script</th>
+        <th>Purpose</th>
+        <th>Status</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01-launch-ec2.sh</td>
+        <td>Launch EC2 t2.micro instance</td>
+        <td class="status-ok">✓ OK</td>
+        <td>Instance i-0d4fdaa639f662a0b running. Defaults use placeholder sg/subnet — must be overridden via env vars.</td>
+      </tr>
+      <tr>
+        <td>02-sync-to-s3.sh</td>
+        <td>Sync local dir to S3</td>
+        <td class="status-ok">✓ OK</td>
+        <td>5,770 objects synced to course-automation-s3-cli. Note: .DS_Store files were included — consider adding --exclude "*.DS_Store".</td>
+      </tr>
+      <tr>
+        <td>03-sts-assume-role.sh</td>
+        <td>Assume IAM role and export credentials</td>
+        <td class="status-ok">✓ OK</td>
+        <td>Fixed to print export statements. Use eval $(...) to load credentials into current shell session.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Commands timeline -->
+  <p class="section-title">Commands Executed — Challenge Timeline</p>
+  <div class="card">
+    <ul class="timeline">
+      <li>
+        <span class="step">01</span>
+        <span class="desc">Launched EC2 instance via <code>01-launch-ec2.sh</code> with AMI ami-02dfbd4ff395f2a1b, key formacaoawskey, SG bia-web</span>
+        <span class="result"><span class="badge green">✓ running</span></span>
+      </li>
+      <li>
+        <span class="step">02</span>
+        <span class="desc">Synced local directory to <code>s3://course-automation-s3-cli</code> via <code>02-sync-to-s3.sh</code></span>
+        <span class="result"><span class="badge green">✓ 5,770 objects</span></span>
+      </li>
+      <li>
+        <span class="step">03a</span>
+        <span class="desc">First attempt: inline env vars with direct <code>aws sts assume-role</code> — shell expanded vars before assignment</span>
+        <span class="result"><span class="badge yellow">✗ empty params</span></span>
+      </li>
+      <li>
+        <span class="step">03b</span>
+        <span class="desc">Second attempt: ran <code>./03-sts-assume-role.sh</code> correctly — credentials printed but not exported to parent shell</span>
+        <span class="result"><span class="badge yellow">✗ ExpiredToken on get-caller-identity</span></span>
+      </li>
+      <li>
+        <span class="step">03c</span>
+        <span class="desc">Script updated to print <code>export AWS_*=...</code> lines. Used <code>eval $(...)</code> to load into current session</span>
+        <span class="result"><span class="badge green">✓ role assumed</span></span>
+      </li>
+      <li>
+        <span class="step">04</span>
+        <span class="desc"><code>aws sts get-caller-identity</code> confirmed assumed role: <code>assumed-role/role-team-dev/mac-lucasmeira</code></span>
+        <span class="result"><span class="badge green">✓ verified</span></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Observations -->
+  <p class="section-title">Observations &amp; Recommendations</p>
+  <div class="card">
+    <div class="kv"><span class="label">⚠ .DS_Store in S3</span><span class="value">macOS metadata files were synced. Add <code>--exclude ".DS_Store"</code> to 02-sync-to-s3.sh</span></div>
+    <div class="kv"><span class="label">⚠ node_modules in S3</span><span class="value">5,770 objects includes node_modules. Consider syncing only build artifacts.</span></div>
+    <div class="kv"><span class="label">ℹ EC2 IMDSv2</span><span class="value">HttpTokens: required — IMDSv2 enforced. Good security posture.</span></div>
+    <div class="kv"><span class="label">ℹ STS session</span><span class="value">Temporary credentials expire after 1h by default. Re-run eval $(...) when needed.</span></div>
+  </div>
+
+  <footer>Challenge Labs 2.0 · Formation AWS · 2026-03-20</footer>
+
+</body>
+</html>
