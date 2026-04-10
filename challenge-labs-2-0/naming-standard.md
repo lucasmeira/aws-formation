@@ -26,12 +26,14 @@ Examples:
 - Use script files for runnable or reusable commands.
 - If a challenge has more than one supporting file, create a companion folder:
   `challenge-<nn>-<topic-slug>/`
-- Store scripts in `scripts/` inside that companion folder.
+- Store Terraform files in `terraform/` inside that companion folder (when applicable).
+- Store helper scripts in `scripts/` inside that companion folder.
 
 Example:
 - `challenge-01-aws-cli-sts-ec2-s3-kirocli.md`
 - `challenge-01-aws-cli-sts-ec2-s3-kirocli/scripts/01-get-session-token.sh`
 - `challenge-01-aws-cli-sts-ec2-s3-kirocli/scripts/02-assume-role.sh`
+- `challenge-02-terraform-ec2/terraform/main.tf`
 
 ## Summary file naming
 - Each period folder includes `summary.md`.
@@ -63,6 +65,7 @@ Example:
 - Lexical sorting keeps periods in chronological order.
 - Period folders include `summary.md`.
 - Challenge files follow the naming pattern.
+- Terraform files (when present) are kept under `challenge-<nn>-<topic-slug>/terraform/`.
 - Script files (when present) are kept under `challenge-<nn>-<topic-slug>/scripts/`.
 - No duplicated challenge numbers in the same period.
 - Challenge number and topic meaning are preserved after migration.

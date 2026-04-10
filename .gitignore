@@ -1,2 +1,7 @@
 .DS_Store
 tmp/
+**/.terraform*
+terraform.tfstate*
+**/*.tfvars
+**/*.auto.tfvars
+!**/*.tfvars.example
