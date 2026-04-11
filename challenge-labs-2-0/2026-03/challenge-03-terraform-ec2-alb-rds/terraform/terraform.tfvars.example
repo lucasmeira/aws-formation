@@ -1,0 +1,2 @@
+instance_name = "bia-dev-tf"
+db_password   = "<set-a-secure-password>"
