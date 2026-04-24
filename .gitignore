@@ -5,3 +5,4 @@ terraform.tfstate*
 **/*.tfvars
 **/*.auto.tfvars
 !**/*.tfvars.example
+**/rds-failover-baseline.env
